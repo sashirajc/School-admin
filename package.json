@@ -1,0 +1,19 @@
+{
+  "name": "school-admin",
+  "version": "1.0.0",
+  "description": "API application to register and manage students",
+  "main": "index.js",
+  "scripts": {
+    "dev": "nodemon .",
+    "start": "node .",
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "author": "Sashiraj Chan",
+  "license": "MIT",
+  "dependencies": {
+    "express": "^4.16.3",
+    "express-status-monitor": "^1.1.5",
+    "mysql": "^2.16.0",
+    "nodemon": "^1.18.3"
+  }
+}
