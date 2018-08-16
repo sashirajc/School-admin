@@ -1,0 +1,9 @@
+{
+    "mysql":{
+        "host"     : "testdb.cgly8d3dvc81.ap-southeast-1.rds.amazonaws.com",
+        "user"     : "Sashi",
+        "password" : "sashirajc",
+        "database" : "testdb"
+          
+    }
+}
