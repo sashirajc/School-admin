@@ -39,7 +39,11 @@ https://github.com/sashirajc/School-admin
 
 ## API Links
 Status - http://localhost:8080/status
+
 Register API - http://localhost:8080/api/register
+
 Get Common Students API - http://localhost:8080/api/commonstudents
+
 Suspend API - http://localhost:8080/api/suspend
+
 Retrieve notifications API - http://localhost:8080/api/retrievefornotifications
