@@ -8,9 +8,8 @@
 const operationSuccess = 'Operation Success';
 const operationFailed = 'Operation Failed';
 
-function generateResponse(status,message){
+function generateResponse(message){
     return {
-        status: status,
         message: message
     };
 }
@@ -29,6 +28,6 @@ exports.successResponseStudents = function(res,code,message){
     res.status(code).send(generateStudentResponse(message));
 }
 
-exports.errorResponse = function(res,err){
-    res.status(500).send(generateResponse(false, err || operationFailed));
+exports.errorResponse = function(res,code, err){
+    res.status(code || 500).send(generateResponse(err || operationFailed));
 }

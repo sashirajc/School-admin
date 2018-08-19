@@ -1,15 +1,14 @@
 const validator = require('email-validator');
-const teacherRegex = new RegExp(/\b(teacher)\w*\b/);
-const studentRegex = new RegExp(/\b(student)\w*\b/);
-exports.validateTeacher = function (teacherID) {
-    if (validator.validate(teacherID) && teacherRegex.test(teacherID)) {
+
+exports.validateItem = function (item,regex) {
+    if (validator.validate(item) && regex.test(item)) {
         return true
     } else return false;
 }
 
-exports.validateStudent = function (studentArr) {
+exports.validateStudentArray = function (studentArr,regex) {
     return studentArr.filter(student =>
-        validator.validate(student) && studentRegex.test(student)
+        validator.validate(student) && regex.test(student)
     );
 }
 

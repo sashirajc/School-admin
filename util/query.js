@@ -32,7 +32,7 @@ exports.insertQuery = function (queryParam, queryValue) {
 
 exports.selectQuery = function (queryParam) {
     return new Promise((resolve, reject) => {
-        const query = `SELECT ${queryParam.queryFor} FROM ${queryParam.table} WHERE (${queryParam.queryCondition})`;
+        const query = `SELECT DISTINCT ${queryParam.queryFor} FROM ${queryParam.table} WHERE (${queryParam.queryCondition})`;
     
 
         db.pool.getConnection(function (err, connection) {
@@ -43,7 +43,6 @@ exports.selectQuery = function (queryParam) {
                     if (err) return reject(err);
                     if (result) return resolve(result);
                     
-
                 });
                 connection.release();
 

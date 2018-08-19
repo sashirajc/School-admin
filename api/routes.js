@@ -9,4 +9,5 @@
      const studentController = require('./v1/controller/studentController.js');
      app.route('/v1/api/register').post(studentController.registerStudent);
      app.route('/v1/api/commonstudents').get(studentController.getCommonStudents);
+     app.route('/v1/api/suspend').post(studentController.suspendStudent);
  };

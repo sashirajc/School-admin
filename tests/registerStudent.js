@@ -2,7 +2,7 @@ var superagent = require('superagent');
 var expect = require('expect');
 
 if (process.argv[3] == 'dev')
-    url = 'http://ott-dev-bre-webapp.azurewebsites.net/v1/';
+    url = 'http:///v1/';
 else if (process.argv[3] == 'local')
     url = 'http://localhost:8080/v1/api/';
 
