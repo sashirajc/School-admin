@@ -20,12 +20,22 @@ function generateStudentResponse(message){
     };
 }
 
+function generateRecipientResponse(message){
+    return {
+        recipients:message
+    };
+}
+
 exports.successResponse = function(res,code,message){
     res.status(code).send(message || operationSuccess);
 }
 
 exports.successResponseStudents = function(res,code,message){
     res.status(code).send(generateStudentResponse(message));
+}
+
+exports.successResponseRecipients = function(res,code,message){
+    res.status(code).send(generateRecipientResponse(message));
 }
 
 exports.errorResponse = function(res,code, err){

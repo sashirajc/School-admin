@@ -21,3 +21,7 @@ exports.makeArray = function(items){
     
 }
 
+exports.getStudentArray = function(items){
+    return items.map(item => item.student_id);
+}
+

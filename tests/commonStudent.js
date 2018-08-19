@@ -4,7 +4,7 @@ var expect = require('expect');
 if (process.argv[3] == 'dev')
     url = 'http://v1/';
 else if (process.argv[3] == 'local')
-    url = 'http://localhost:8080/v1/api/';
+    url = 'http://localhost:8080/api/';
 
 describe('Get Common Students', function () {
     it('Get students of one teacher', function (done) {

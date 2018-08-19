@@ -12,8 +12,8 @@ const studentRegex = new RegExp(/\b(student)\w*\b/);
 
 exports.registerStudent = async function (req, res) {
     if (validate.validateItem(req.body.teacher,teacherRegex)) {
-        var studentArr = validate.validateStudentArray(req.body.students,studentRegex);
-        studentArr = studentArr.map(student => new Array(student, req.body.teacher));
+        var studentArr = validate.validateStudentArray(req.body.students,studentRegex)
+        .map(student => new Array(student, req.body.teacher));
         try {
             if (await query.insertQuery(`student_registration (student_id,teacher_id) VALUES ?`, [studentArr]))
                 response.successResponse(res,204);
@@ -25,9 +25,9 @@ exports.registerStudent = async function (req, res) {
 
 exports.getCommonStudents = async function(req,res){
     
-    var teacherArr = validate.makeArray(req.query.teacher);
-    teacherArr = teacherArr.filter(teacher => validate.validateItem(teacher,teacherRegex));
-    teacherArr = teacherArr.map(teacher => `teacher_id='${teacher}'`);
+    var teacherArr = validate.makeArray(req.query.teacher)
+    .filter(teacher => validate.validateItem(teacher,teacherRegex))
+    .map(teacher => `teacher_id='${teacher}'`);
     
     const queryParam = {
         table: 'student_registration',
@@ -35,8 +35,7 @@ exports.getCommonStudents = async function(req,res){
         queryCondition: teacherArr.join(' OR ')
     };
     try{
-        var students  = await query.selectQuery(queryParam);
-        students = students.map(item => item.student_id);
+        var students = validate.getStudentArray(await query.selectQuery(queryParam));
         response.successResponseStudents(res,200,students);
     } catch(err){
         response.errorResponse(res,400);
@@ -48,7 +47,6 @@ exports.suspendStudent = async function(req,res){
     if(validate.validateItem(req.body.student,studentRegex)){
         
         try{
-    
             if(await query.insertQuery(`student_suspension (student_id) VALUES (?)`,req.body.student)){
                 response.successResponse(res,204);
             }
