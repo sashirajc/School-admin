@@ -13,3 +13,12 @@ exports.validateStudent = function (studentArr) {
     );
 }
 
+exports.makeArray = function(items){
+    var Arr = [];
+    if(Array.isArray(items))
+    Arr.push(...items);
+    else Arr.push(items)
+    return Arr;
+    
+}
+

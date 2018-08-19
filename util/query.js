@@ -16,7 +16,7 @@ exports.insertQuery = function (queryParam, queryValue) {
             if (!err && connection) {
 
                 connection.query(query, queryValue, function (err, result, fields) {
-                
+
                     if (err) return reject(err);
                     if (result.affectedRows == queryValue[0].length) return resolve('success');
                     else return reject('Some students were not added');
@@ -24,7 +24,29 @@ exports.insertQuery = function (queryParam, queryValue) {
                 });
 
                 connection.release();
-            
+
+            } else return reject(err);
+        });
+    });
+}
+
+exports.selectQuery = function (queryParam) {
+    return new Promise((resolve, reject) => {
+        const query = `SELECT ${queryParam.queryFor} FROM ${queryParam.table} WHERE (${queryParam.queryCondition})`;
+    
+
+        db.pool.getConnection(function (err, connection) {
+            if (!err && connection) {
+
+                connection.query(query, function (err, result, fields) {
+                    
+                    if (err) return reject(err);
+                    if (result) return resolve(result);
+                    
+
+                });
+                connection.release();
+
             } else return reject(err);
         });
     });

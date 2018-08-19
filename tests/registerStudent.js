@@ -6,7 +6,7 @@ if (process.argv[3] == 'dev')
 else if (process.argv[3] == 'local')
     url = 'http://localhost:8080/v1/api/';
 
-describe('Register a new student', function () {
+describe('Register new students', function () {
     it('One Student is registered', function (done) {
         superagent
             .post(`${url}register`)

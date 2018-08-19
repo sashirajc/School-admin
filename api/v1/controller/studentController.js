@@ -20,3 +20,24 @@ exports.registerStudent = async function (req, res) {
         }
     } else response.successResponse(res,400,'Invalid Teacher');
 }
+
+exports.getCommonStudents = async function(req,res){
+    
+    var teacherArr = validate.makeArray(req.query.teacher);
+    teacherArr = teacherArr.filter(teacher => validate.validateTeacher(teacher));
+    teacherArr = teacherArr.map(teacher => `teacher_id='${teacher}'`);
+    
+    const queryParam = {
+        table: 'student_registration',
+        queryFor: 'student_id',
+        queryCondition: teacherArr.join(' OR ')
+    };
+    try{
+        var students  = await query.selectQuery(queryParam);
+        students = students.map(item => item.student_id);
+        response.successResponseStudents(res,200,students);
+    } catch(err){
+        console.log(err,'error from try');
+    }
+    
+}

@@ -15,8 +15,18 @@ function generateResponse(status,message){
     };
 }
 
+function generateStudentResponse(message){
+    return {
+        students:message
+    };
+}
+
 exports.successResponse = function(res,code,message){
     res.status(code).send(message || operationSuccess);
+}
+
+exports.successResponseStudents = function(res,code,message){
+    res.status(code).send(generateStudentResponse(message));
 }
 
 exports.errorResponse = function(res,err){
