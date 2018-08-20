@@ -12,4 +12,5 @@
      app.route('/api/commonstudents').get(studentController.getCommonStudents);
      app.route('/api/suspend').post(studentController.suspendStudent);
      app.route('/api/retrievefornotifications').post(notificationController.retrieveForNotification);
+     app.route('/live').get((req,res)=>res.send('Page is alive'));
  };

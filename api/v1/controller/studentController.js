@@ -55,5 +55,5 @@ exports.suspendStudent = async function(req,res){
             if(err.code === 'ER_DUP_ENTRY')
             response.errorResponse(res,400,'Student Already Suspended');
         }
-    } else response.errorResponse(res);
+    } else response.errorResponse(res,400,'Invalid Student');
 }

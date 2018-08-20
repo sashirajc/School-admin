@@ -7,6 +7,7 @@
 2. Code must be deployed on AWS (Optional)
 3. Readme must contain links to hosted APIs and instructions on how to run application locally.
 4. Error messages must have appropriate message and HTTP error codes.
+5. Teachers and Students are identified by their email addresses. All APIs hence have input validation using regex to ensure only emails of the format teacher{something}@something.com can be valid emails for teachers. Similarly student{something}@something.com is the valid email format for students.
 
 
 ## User Stories
@@ -37,13 +38,20 @@ https://github.com/sashirajc/School-admin
 2. Run `npm install`
 3. Run `npm run start`
 
+## Steps to run the test cases
+1. Navigate to /tests
+2. Run `npm install mocha -g` to install mocha globally
+3. Run `mocha commonStudents.js dev` to test the api deployed on AWS
+4. Run `mocha commonStudents.js local` to test the api on localhost
+5. Run `mocha suspendStudent.js dev/local studentName` where studentName is a student that is already added. A student can only be suspended once. If the student is already suspended then the positive test would fail.
+
 ## API Links
-Status - http://localhost:8080/status
+Status - http://ec2-13-229-123-65.ap-southeast-1.compute.amazonaws.com:8080/status
 
-Register API - http://localhost:8080/api/register
+Register API - http://ec2-13-229-123-65.ap-southeast-1.compute.amazonaws.com:8080/api/register
 
-Get Common Students API - http://localhost:8080/api/commonstudents
+Get Common Students API - http://ec2-13-229-123-65.ap-southeast-1.compute.amazonaws.com:8080/api/commonstudents
 
-Suspend API - http://localhost:8080/api/suspend
+Suspend API - http://ec2-13-229-123-65.ap-southeast-1.compute.amazonaws.com:8080/api/suspend
 
-Retrieve notifications API - http://localhost:8080/api/retrievefornotifications
+Retrieve notifications API - http://ec2-13-229-123-65.ap-southeast-1.compute.amazonaws.com:8080/api/retrievefornotifications
